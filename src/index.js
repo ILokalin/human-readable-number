@@ -11,26 +11,22 @@ module.exports = function toReadable (number) {
     throw 'Too big number';
   }
 
-  let numberSet = String(number).split('').map(item => Number(item));
   let result = [];
 
   if (number >= 100) {
-    result.push(HUMAN_NUMBER[numberSet[0]]);
+    result.push(HUMAN_NUMBER[Math.floor(number / 100)]);
     result.push(HUMAN_NUMBER_HUNDRED);
 
-    number = number - numberSet[0] * 100;
-    numberSet = numberSet.slice(1);
+    number = number % 100;
   }
 
-
   if (number >= 20) {
-    result.push(HUMAN_NUMBER_TENS[numberSet[0] - 2]);
-    if (numberSet[1] > 0) {
-
-      result.push(HUMAN_NUMBER[numberSet[1]]);
+    result.push(HUMAN_NUMBER_TENS[Math.floor(number / 10) - 2]);
+    if (number % 10 > 0) {
+      result.push(HUMAN_NUMBER[number % 10]);
     }
   } else if (number > 0 || result.length === 0) {
-    result.push(HUMAN_NUMBER[Number(numberSet.join(''))]);
+    result.push(HUMAN_NUMBER[number]);
   }
 
   return result.join(' ');
