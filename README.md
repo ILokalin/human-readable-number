@@ -1,4 +1,5 @@
 # Human Readable Number
+[![Build status](https://ci.appveyor.com/api/projects/status/nchm06n58p7op7ys?svg=true)](https://ci.appveyor.com/project/ILokalin/human-readable-number)
 
 ## Task
 Your task is to implement function `toReadable` that converts given number, to readable string.
